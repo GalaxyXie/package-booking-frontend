@@ -40,8 +40,11 @@ export default {
   methods: {
     onSubmit() {
      this.$store.dispatch("addItem",this.form);
+     window.alert('Build Success ');
+     this.$router.push({ path: '/'}) ;
     }
-  }
+  },
+ 
 };
 </script>
 

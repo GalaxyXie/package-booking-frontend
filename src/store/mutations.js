@@ -9,6 +9,9 @@ const mutations={
     },
     addItem(state,item){
         state.parcelsAll.push(item);
-    }
+    },
+    updateItem(state, item){
+        state.parcelsAll.map(itemNow=>itemNow.id==item.id?item:itemNow);
+    },
 }
 export default mutations

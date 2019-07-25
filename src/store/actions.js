@@ -37,5 +37,15 @@ const actions = {
           console.log(error);
         });  
       },
+      updateItem({commit},item){
+        axios.put('http://localhost:8888/parcels/' +item.orderId,item)
+        .then(function (response) {
+          commit('updateItem',item);
+          console.log(item);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });  
+      },
 }
 export default actions

@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
       <div>菜鸟驿站</div>
-      
+      <el-button type="success" @click="turnToUpdate()">预约订单</el-button>
       <el-button plain @click="getParcels">All</el-button>
       <el-button plain @click="getParcelByState('已预约')">已预约</el-button>
       <el-button plain @click="getParcelByState('已取件')">已取件</el-button>
@@ -18,7 +18,7 @@
         <el-table-column prop="appointmentTime" label="预约时间"></el-table-column>
         <el-table-column prop="status" label>
           <template slot-scope="scope">
-            <el-button v-if="scope.row.status!='已取件'">确认收件</el-button>
+            <el-button v-if="scope.row.status!='已取件'" @click="updateParcel(scope.row)" >确认收件</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    turnToUpdate(){
+      this.$router.push({ name: 'updateTime' }) ;
+    },
     addParcel() {
        this.$router.push({ name: 'AddParcel' }) ;
     },
@@ -44,6 +47,27 @@ export default {
     },
     getParcels(){
       this.$store.dispatch("getItem");
+    },
+    updateParcel(order){
+        
+        this.$confirm('您确定收到包裹了吗？', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          order.status='已取件';
+          this.$store.dispatch("updateItem",order);
+          this.$message({
+            type: 'success',
+            message: '收货成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消确认'
+          });          
+        });
+        console.log(order);
     }
   }
 }
