@@ -6,6 +6,9 @@ const mutations={
     getParcelsByStatus(state, items){
         state.parcelsAll=[];
         state.parcelsAll.push(...items);
+    },
+    addItem(state,item){
+        state.parcelsAll.push(item);
     }
 }
 export default mutations

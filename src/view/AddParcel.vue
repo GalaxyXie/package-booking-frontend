@@ -5,13 +5,13 @@
     </el-header>
     <el-main>
       <el-form ref="form" :model="form" label-width="80px">
-        <el-form-item label="运单号">
+        <el-form-item label="运单号:">
           <el-input v-model="form.orderId"></el-input>
         </el-form-item>
-        <el-form-item label="收件人">
+        <el-form-item label="收件人:">
           <el-input v-model="form.customName"></el-input>
         </el-form-item>
-        <el-form-item label="电话">
+        <el-form-item label="电话:">
           <el-input v-model="form.telephone"></el-input>
         </el-form-item>
         <el-form-item>
@@ -25,20 +25,21 @@
 
 <script>
 export default {
-  name: "AddPacel",
+  name: "AddParcel",
  
   data() {
     return {
       form: {
         orderId: "",
         customName: "",
-        telephone: ""
+        telephone: "",
+        status: "未预约",
       }
     };
   },
   methods: {
     onSubmit() {
-      console.log("submit!");
+     this.$store.dispatch("addItem",this.form);
     }
   }
 };

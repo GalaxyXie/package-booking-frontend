@@ -16,7 +16,7 @@ const actions = {
     },
     getItemByStatus({ commit }, status) {
 
-        axios.get('http://localhost:8888/parcels', {  //params参数必写 , 如果没有参数传{}也可以
+        axios.get('http://localhost:8888/parcels', { 
             params: {
                 status: status
             }
@@ -27,5 +27,15 @@ const actions = {
                 commit('getParcelsByStatus', response.data);
             });
     },
+    addItem({commit},item){
+        axios.post('http://localhost:8888/parcels', item)
+        .then(function (response) {
+          commit('addItem',item);
+          console.log(item);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });  
+      },
 }
 export default actions

@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import Main from '../components/Main'
-import AddParcel from '../components/AddParcel'
+import Main from '../view/Main'
+import AddParcel from '../view/AddParcel'
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)

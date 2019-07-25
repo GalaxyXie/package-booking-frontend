@@ -1,12 +1,13 @@
 <template>
   <el-container>
     <el-header>
-      <span>菜鸟驿站</span>
+      <div>菜鸟驿站</div>
+      
       <el-button plain @click="getParcels">All</el-button>
       <el-button plain @click="getParcelByState('已预约')">已预约</el-button>
       <el-button plain @click="getParcelByState('已取件')">已取件</el-button>
       <el-button plain @click="getParcelByState('未预约')">未预约</el-button>
-      <el-button type="primary" round >添加</el-button>
+      <el-button type="primary" round @click="addParcel()">添加</el-button>
     </el-header>
     <el-main>
       <el-table :data="tableData" style="width: 100%">
