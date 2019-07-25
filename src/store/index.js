@@ -10,8 +10,7 @@ const store = new Vuex.Store({
   mutations,
   state: {
         parcelsAll:[],
-
     },
    
   })
-  export default store;
+  export default store

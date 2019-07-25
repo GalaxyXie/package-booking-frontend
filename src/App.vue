@@ -12,7 +12,7 @@ export default {
   components: {
     Main
   },
-   mounted() {
+   created() {
       this.$store.dispatch("getItem");
   }
 }
