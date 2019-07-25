@@ -1,13 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    
+      <Main/>
+    
   </div>
 </template>
-
+<script>
+import Main from './components/Main'
+export default {
+  name: 'app',
+  components: {
+    Main
+  },
+   mounted() {
+      this.$store.dispatch("getItem");
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
