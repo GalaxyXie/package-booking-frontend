@@ -11,7 +11,10 @@ const mutations={
         state.parcelsAll.push(item);
     },
     updateItem(state, item){
-        state.parcelsAll.map(itemNow=>itemNow.id==item.id?item:itemNow);
+        state.parcelsAll.map(itemNow=>itemNow.orderId==item.orderId?item:itemNow);
+    },
+    filterItem(state, id){
+        state.parcelsAll.filter(item=>item.orderId==id);
     },
 }
 export default mutations
