@@ -14,7 +14,10 @@
         <el-form-item label="电话">
           <el-input v-model="form.telephone"></el-input>
         </el-form-item>
-       
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button>取消</el-button>
+        </el-form-item>
       </el-form>
     </el-main>
   </el-container>
@@ -23,22 +26,22 @@
 <script>
 export default {
   name: "AddPacel",
-  computed: {},
-    data() {
-      return {
-        form: {
-          orderId: '',
-          customName: '',
-          telephone: '',
-        }
+ 
+  data() {
+    return {
+      form: {
+        orderId: "",
+        customName: "",
+        telephone: ""
       }
-    },
-    methods: {
-      onSubmit() {
-        console.log('submit!');
-      }
+    };
+  },
+  methods: {
+    onSubmit() {
+      console.log("submit!");
     }
   }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

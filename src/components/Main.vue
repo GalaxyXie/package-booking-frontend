@@ -2,11 +2,11 @@
   <el-container>
     <el-header>
       <span>菜鸟驿站</span>
-      <el-button plain>All</el-button>
-      <el-button plain @click="showDatedItems">已预约</el-button>
-      <el-button plain>已取件</el-button>
-      <el-button plain>未预约</el-button>
-      <el-button type="primary" round>添加</el-button>
+      <el-button plain @click="getParcels">All</el-button>
+      <el-button plain @click="getParcelByState('已预约')">已预约</el-button>
+      <el-button plain @click="getParcelByState('已取件')">已取件</el-button>
+      <el-button plain @click="getParcelByState('未预约')">未预约</el-button>
+      <el-button type="primary" round >添加</el-button>
     </el-header>
     <el-main>
       <el-table :data="tableData" style="width: 100%">
@@ -26,21 +26,26 @@
 </template>
 
 <script>
+
 export default {
   name: "Main",
   computed: {
     tableData() {
-      console.log(this.$store.state.parcelsAll);
       return this.$store.state.parcelsAll;
     }
   },
-  data() {
-    return {};
-  },
   methods: {
-    showDatedItems() {}
+    addParcel() {
+       this.$router.push({ name: 'AddParcel' }) ;
+    },
+    getParcelByState(status){
+        this.$store.dispatch("getItemByStatus",status);
+    },
+    getParcels(){
+      this.$store.dispatch("getItem");
+    }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
